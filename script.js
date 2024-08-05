@@ -217,7 +217,7 @@ $(document).ready(function() {
           const contentType = $(this).find('div').attr('data-content-type');
           if (contentType && tagsJson[contentType]) {
               const wrappedContent = tagsJson[contentType].replace('${content}', content);
-              allContent += wrappedContent + '\n';
+              allContent += wrappedContent + '<br>';
           }
       });
       navigator.clipboard.writeText(style + allContent.trim()).then(function() {
