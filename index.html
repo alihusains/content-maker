@@ -7,15 +7,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
   <style>
-    
-
     @font-face {
-    font-family: 'quran';
-    src: url('./quranfont.ttf');
-}
+      font-family: 'quran';
+      src: url('./quranfont.ttf');
+    }
     .content-box {
       border: 1px solid #ddd;
       padding: 10px;
@@ -52,9 +50,10 @@
     }
     #previewContainer {
       border: 1px solid #ddd;
-      padding: 10px;
-      height: 400px;
-      overflow-y: auto;
+      padding: 5px;
+      height: 600px auto;
+      overflow-x: auto;
+      background-color: #FAF4E6;
       white-space: pre-wrap; /* Preserve whitespace and newlines */
     }
     .toolbar {
@@ -67,12 +66,15 @@
     }
   </style>
 
-<style> * { font-size: 23px; text-align: justify; text-justify: inter-word; } .guj { line-height: 1.4; font-family: 'Noto Serif Gujarati', serif; direction: ltr; } div.guj>b { font-weight: 900; } .arabic {  font-family: 'quran'; direction: rtl; text-align-last: center; } .gujb { line-height: 1.4; font-family: 'Noto Serif Gujarati', serif; direction: ltr; font-weight: 900; }</style>
-
-
-
+  <style>
+    * { font-size: 23px; text-align: justify; text-justify: inter-word; }
+    .guj { line-height: 1.4; font-family: 'Noto Serif Gujarati', serif; direction: ltr; }
+    div.guj>b { font-weight: 900; }
+    .arabic { font-family: 'quran'; direction: rtl; text-align-last: center; }
+    .gujb { line-height: 1.4; font-family: 'Noto Serif Gujarati', serif; direction: ltr; font-weight: 900; }
+  </style>
 </head>
-<body>
+<body >
 
 <div class="container mt-4">
   <div class="d-flex justify-content-between mb-2">
@@ -90,45 +92,12 @@
 </div>
 
 <!-- Add Content Modal -->
-<!-- <div class="modal" id="addContentModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Content</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="toolbar">
-          <button type="button" id="boldButton" class="btn btn-info">B</button>
-        </div>
-        <select id="contentType" class="form-control mb-2">
-          <option value="guj">Gujarati</option>
-          <option value="gujb">Gujarati Bold</option>
-          <option value="arabic">Arabic</option>
-          <option value="english">English</option>
-          <option value="urdu">Urdu</option>
-          <option value="newline">New Line</option>
-          <option value="divider">Divider</option>
-        </select>
-        <textarea id="contentText" class="form-control" rows="5"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="saveContentButton" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-<!-- Add Content Modal -->
 <div class="modal" id="addContentModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Content</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal">&times;"></button>
       </div>
       <div class="modal-body">
         <div class="toolbar">
@@ -154,21 +123,28 @@
   </div>
 </div>
 
-
-<!-- Edit Content Modal -->
 <!-- Edit Content Modal -->
 <div class="modal" id="editContentModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Edit Content</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal">&times;"></button>
       </div>
       <div class="modal-body">
         <div class="toolbar">
           <button type="button" id="editBoldButton" class="btn btn-info">B</button>
           <button type="button" id="editItalicButton" class="btn btn-warning">I</button>
         </div>
+        <select id="editContentType" class="form-control mb-2">
+          <option value="guj">Gujarati</option>
+          <option value="gujb">Gujarati Bold</option>
+          <option value="arabic">Arabic</option>
+          <option value="english">English</option>
+          <option value="urdu">Urdu</option>
+          <option value="newline">New Line</option>
+          <option value="divider">Divider</option>
+        </select>
         <textarea id="editContentText" class="form-control" rows="5"></textarea>
       </div>
       <div class="modal-footer">
@@ -178,7 +154,6 @@
     </div>
   </div>
 </div>
-
 
 <input type="hidden" id="tagsJson">
 
