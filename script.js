@@ -89,8 +89,7 @@ $(document).ready(function() {
             }
         });
         const minifiedContent = allContent.replace(/\n+/g, '<br>').trim();
-        var lines2replace = minifiedcontent.replace('<br><br>,'<br>').trim();
-        const finalContent = style + lines2replace;
+        const finalContent = style + minifiedContent;
         navigator.clipboard.writeText(finalContent).then(function() {
             alert('Content copied to clipboard');
         }, function(err) {
