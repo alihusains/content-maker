@@ -77,7 +77,7 @@ $(document).ready(function() {
     });
 
     $('#copyButton').click(function() {
-        let style = `<style> div{padding-top:1em; padding-bottom:5px; line-height:1.8;}div.guj>b { font-weight: 900; } .arabic { direction: rtl;  text-align: center; text-align-last: center; text-decoration: underline solid;  text-decoration-thickness: 1%;text-underline-offset: 10px; line-height:1.8;} .gujb { direction: ltr; font-weight: 900; }</style>`;
+        let style = `<style> div{padding-top:1em; padding-bottom:5px; line-height:1.8;}div.guj>b { font-weight: 900; } .arabic { direction: rtl;  text-align: center; text-align-last: center; text-decoration: underline solid;  text-decoration-thickness: 1%;text-underline-offset: 10px; line-height:1.8;} .gujb { direction: ltr; font-weight: 900; text-align: center; text-align-last: center; }</style>`;
         let allContent = '';
         const tagsJson = JSON.parse($('#tagsJson').val());
         $('#contentContainer .content-box').each(function() {
