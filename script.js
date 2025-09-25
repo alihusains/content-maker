@@ -88,8 +88,8 @@ $(document).ready(function() {
                 allContent += wrappedContent + '\n';
             }
         });
-        const minifiedContent = allContent.replace(/\n+/g, '<br>').trim();
-         minifiedContent = minifiedContent.replace(/class="(.*?)"/g, "class='$1'");
+        const linereplaced = allContent.replace(/\n+/g, '<br>').trim();
+        const minifiedContent = linereplaced.replace(/class="(.*?)"/g, "class='$1'");
         const finalContent = style + minifiedContent;
         navigator.clipboard.writeText(finalContent).then(function() {
             alert('Content copied to clipboard');
