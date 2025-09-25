@@ -88,7 +88,7 @@ $(document).ready(function() {
                 allContent += wrappedContent + '\n';
             }
         });
-        const linereplaced = allContent.replace(/\n+/g, '<br>').trim();
+        let linereplaced = allContent.replace(/\n+/g, '<br>').trim();
         const minifiedContent = linereplaced.replace(/class="(.*?)"/g, "class='$1'");
         const finalContent = style + minifiedContent;
         navigator.clipboard.writeText(finalContent).then(function() {
