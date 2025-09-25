@@ -89,6 +89,7 @@ $(document).ready(function() {
             }
         });
         const minifiedContent = allContent.replace(/\n+/g, '<br>').trim();
+         minifiedContent = minifiedContent.replace(/class="(.*?)"/g, "class='$1'");
         const finalContent = style + minifiedContent;
         navigator.clipboard.writeText(finalContent).then(function() {
             alert('Content copied to clipboard');
