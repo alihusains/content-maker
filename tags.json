@@ -1,9 +1,9 @@
 {
-    "guj": "<div class=\'guj\'>${content}</div>",
-    "gujb": "<div class=\'gujb\'>${content}</div>",
-    "arabic": "<div class=\'arabic\'>${content}</div>",
-    "english": "<div class=\'english\'>${content}</div>",
-    "urdu": "<div class=\'urdu\'>${content}</div>",
+    "guj": "<div class='guj'>${content}</div>",
+    "gujb": "<div class='gujb'>${content}</div>",
+    "arabic": "<div class='arabic'>${content}</div>",
+    "english": "<div class='english'>${content}</div>",
+    "urdu": "<div class='urdu'>${content}</div>",
     "newline": "<br>",
     "divider": "<hr>",
     "style":"<style> div{padding-top:1em; padding-bottom:5px; line-height:1.6;}div.guj>b { font-weight: 900; } .arabic { direction: rtl;  text-align: center; text-align-last: center; text-decoration: underline solid;  text-decoration-thickness: 1%;text-underline-offset: 10px; line-height:1.6;} .gujb { direction: ltr; font-weight: 900; text-align: center; text-align-last: center; }</style>" 
