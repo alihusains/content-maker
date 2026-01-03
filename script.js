@@ -76,27 +76,60 @@ $(document).ready(function() {
         updatePreview(); // Update preview after deleting content
     });
 
-    $('#copyButton').click(function() {
-        let style = `<style> div{padding-top:1em; padding-bottom:5px; line-height:1.6;}div.guj>b { font-weight: 900; } .arabic { direction: rtl;  text-align: center; text-align-last: center; text-decoration: underline solid;  text-decoration-thickness: 1%;text-underline-offset: 10px; line-height:1.6;} .gujb { direction: ltr; font-weight: 900; text-align: center; text-align-last: center; }</style>`;
-        let allContent = '';
-        const tagsJson = JSON.parse($('#tagsJson').val());
-        $('#contentContainer .content-box').each(function() {
-            const content = $(this).find('div').html(); // Use .html() to retain formatting
-            const contentType = $(this).find('div').attr('data-content-type');
-            if (contentType && tagsJson[contentType]) {
-                const wrappedContent = tagsJson[contentType].replace('${content}', content);
-                allContent += wrappedContent + '\n';
-            }
-        });
-        let linereplaced = allContent.replace(/\n+/g, '<br>').trim();
-        const minifiedContent = linereplaced.replace(/class="(.*?)"/g, "class='$1'");
-        const finalContent = style + minifiedContent;
-        navigator.clipboard.writeText(finalContent).then(function() {
-            alert('Content copied to clipboard');
-        }, function(err) {
-            console.error('Could not copy text: ', err);
-        });
+    // $('#copyButton').click(function() {
+    //     let style = `<style> div{padding-top:1em; padding-bottom:5px; line-height:1.6;}div.guj>b { font-weight: 900; } .arabic { direction: rtl;  text-align: center; text-align-last: center; text-decoration: underline solid;  text-decoration-thickness: 1%;text-underline-offset: 10px; line-height:1.6;} .gujb { direction: ltr; font-weight: 900; text-align: center; text-align-last: center; }</style>`;
+    //     let allContent = '';
+    //     const tagsJson = JSON.parse($('#tagsJson').val());
+    //     $('#contentContainer .content-box').each(function() {
+    //         const content = $(this).find('div').html(); // Use .html() to retain formatting
+    //         const contentType = $(this).find('div').attr('data-content-type');
+    //         if (contentType && tagsJson[contentType]) {
+    //             const wrappedContent = tagsJson[contentType].replace('${content}', content);
+    //             allContent += wrappedContent + '\n';
+    //         }
+    //     });
+    //     let linereplaced = allContent.replace(/\n+/g, '<br>').trim();
+    //     const minifiedContent = linereplaced.replace(/class="(.*?)"/g, "class='$1'");
+    //     const finalContent = style + minifiedContent;
+    //     navigator.clipboard.writeText(finalContent).then(function() {
+    //         alert('Content copied to clipboard');
+    //     }, function(err) {
+    //         console.error('Could not copy text: ', err);
+    //     });
+    // });
+
+
+$('#copyButton').click(function() {
+    let style = `<style> div{padding-top:1em; padding-bottom:5px; line-height:1.6;}div.guj>b { font-weight: 900; } .arabic { direction: rtl;  text-align: center; text-align-last: center; text-decoration: underline solid;  text-decoration-thickness: 1%;text-underline-offset: 10px; line-height:1.6;} .gujb { direction: ltr; font-weight: 900; text-align: center; text-align-last: center; }</style>`;
+    let allContent = '';
+    const tagsJson = JSON.parse($('#tagsJson').val());
+
+    $('#contentContainer .content-box').each(function() {
+        const content = $(this).find('div').html(); // keep HTML
+        const contentType = $(this).find('div').attr('data-content-type');
+        if (contentType && tagsJson[contentType]) {
+            const wrappedContent = tagsJson[contentType].replace('${content}', content);
+            // add an explicit newline marker to preserve separation
+            allContent += wrappedContent + '\r\n';
+        }
     });
+
+    // FIX: handle both actual newlines and adjacent HTML blocks
+    let linereplaced = allContent
+        .replace(/(\r\n|\n|\r)/g, '<br>')                // replace any newline type
+        .replace(/<\/div>\s*<div/g, '</div><br><div>')   // add <br> between divs if newlines lost
+        .trim();
+
+    const minifiedContent = linereplaced.replace(/class="(.*?)"/g, "class='$1'");
+    const finalContent = style + minifiedContent;
+
+    navigator.clipboard.writeText(finalContent).then(function() {
+        alert('Content copied to clipboard');
+    }, function(err) {
+        console.error('Could not copy text: ', err);
+    });
+});
+    
 
     $('#restartButton').click(function() {
         if (confirm('Are you sure you want to clear all content?')) {
